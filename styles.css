@@ -31,12 +31,12 @@ footer {
     bottom: 0;
 }
 
-.unlock {
+.container {
     border: 2px solid rgb(7, 81, 146);
     border-radius: 10px;
-    width: 300px;
-    height: 250px;
-    margin: 300px auto auto auto;
+    width: 350px;
+    height: 325px;
+    margin: 250px auto auto auto;
     display: flex;  
     justify-content: center;
     flex-direction: column; 
@@ -70,10 +70,11 @@ input {
     border-radius: 5px;
     border-style: solid;
     padding: 2px;
+    margin-bottom: 0.5em;
 }
 
 legend {
-    margin-left: 3.4em;
+    margin-left: 7em;
     font-weight: bold;
 }
 

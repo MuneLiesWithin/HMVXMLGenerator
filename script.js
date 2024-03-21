@@ -1,32 +1,5 @@
-function unlockUser() {
-    let usernameUnlock = document.getElementById("usernameUnlock").value
-    if(usernameUnlock.trim() == ""){
-        flashMessage("neutral", "Por favor insira um usuário")
-    } else {
-        fetch('http://hoh2k1300/OnBasePowerAPI/api/UnlockUser', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username: usernameUnlock.trim() }),
-        })
-        .then(res =>   res.json())
-        .then(data => {
-            if(data === "Usuário desbloqueado") 
-            {
-                flashMessage("success", data)
-            }
-            else 
-            {
-                flashMessage("warning", data)
-            }
-            
-        })
-        .catch(error => {
-            flashMessage("error", "Ocorreu algum erro")
-            console.error(error)
-        })
-    }
+function generateXML() {
+    // TO DO
 }
 
 function flashMessage(type, message) {
