@@ -20,16 +20,18 @@
     <fieldset class="container">
         <legend>Gerador de XML</legend>
         <div class="form">
-            <label for="cnpj">CNPJ:</label><br>
-            <input type="text" id="cnpj"><br>
+            <label for="cnpj">CNPJ Prestador:</label><br>
+            <input type="text" id="cnpj" onkeypress="handleKeyPress(event, 'generateXML')"><br>
             <label for="dataemissao">Data Emissão:</label><br>
-            <input type="date" id="dataemissao"><br>
+            <input type="date" id="dataemissao" onkeypress="handleKeyPress(event, 'generateXML')"><br>
             <label for="valor">Valor:</label><br>
-            <input type="text" id="valor"><br>
+            <input type="text" id="valor" onkeypress="handleKeyPress(event, 'generateXML')"><br>
             <label for="numdoc">Número Documento:</label><br>
-            <input type="text" id="numdoc"><br>
+            <input type="text" id="numdoc" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+            <label for="uf">UF Prestador:</label><br>
+            <input type="text" id="uf" onkeypress="handleKeyPress(event, 'generateXML')"><br>
             <label for="vencimento">Vencimento:</label><br>
-            <input type="text" id="vencimento" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+            <input type="date" id="vencimento" onkeypress="handleKeyPress(event, 'generateXML')"><br>
             <button onclick="generateXML()" id="generateXML">Gerar XML</button>
         </div>
     </fieldset>

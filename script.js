@@ -1,11 +1,11 @@
 function generateXML() {
-    // TO DO
     const cnpj = document.getElementById("cnpj").value
     const dataEmissao = document.getElementById("dataemissao").value
     const valor = document.getElementById("valor").value
     const numDoc = document.getElementById("numdoc").value
+    const uf = document.getElementById("uf").value
     const vencimento = document.getElementById("vencimento").value
-    if(cnpj.trim() == "" || dataEmissao.trim() == "" || valor.trim() == "" || numDoc.trim() == "" || vencimento.trim() == "") {
+    if(cnpj.trim() == "" || dataEmissao.trim() == "" || valor.trim() == "" || numDoc.trim() == "" || uf.trim() == "" || vencimento.trim() == "") {
         flashMessage("warning", "Por favor preencha todos os campos")
     } else {
         flashMessage("success", "Gerando arquivo XML...");
@@ -13,13 +13,32 @@ function generateXML() {
         fetch('layout.xml')
             .then(response => response.text())
             .then(xmlContent => {
-                const blob = new Blob([xmlContent], { type: 'text/xml' });
-                const link = document.createElement('a');
+                const parser = new DOMParser()
+                const xmlDoc = parser.parseFromString(xmlContent, 'text/xml')
+
+                //CNPJ
+                const cnpjTag = xmlDoc.querySelector('IdentificacaoPrestador > Cnpj')
+                cnpjTag.textContent = cnpj
+
+                //Data Emissão
+                //Valor
+
+                //Número Documento
+                const numeroTag = xmlDoc.querySelector('Numero')
+                numeroTag.textContent = numDoc
+
+                //UF 
+                //Vencimento
+            
+                const updatedXmlContent = new XMLSerializer().serializeToString(xmlDoc)
+                const blob = new Blob([updatedXmlContent], { type: 'text/xml' })
+
+                const link = document.createElement('a')
                 link.href = window.URL.createObjectURL(blob);
-                link.download = numDoc + "-" + dataEmissao +'.xml';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                link.download = numDoc + '.xml'
+                document.body.appendChild(link)
+                link.click()
+                document.body.removeChild(link)
             })
             .catch(error => {
                 console.log(error)
@@ -44,3 +63,4 @@ function handleKeyPress(event, buttonId) {
         document.getElementById(buttonId).click(); 
     }
 }
+
