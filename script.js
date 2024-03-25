@@ -21,14 +21,28 @@ function generateXML() {
                 cnpjTag.textContent = cnpj
 
                 //Data Emissão
+                const competenciaTag = xmlDoc.querySelector('Competencia')
+                competenciaTag.textContent = dataEmissao + "T00:00:00"
+                const dataEmissaoTag = xmlDoc.querySelector('DataEmissao')
+                dataEmissaoTag.textContent = dataEmissao + "T00:00:00"
+
                 //Valor
+                const valorServicoTag = xmlDoc.querySelector('Valores > ValorServicos')
+                valorServicoTag.textContent = valor
+                const valorLiquidoTag = xmlDoc.querySelector('Valores > ValorLiquidoNfse')
+                valorLiquidoTag.textContent = valor
 
                 //Número Documento
                 const numeroTag = xmlDoc.querySelector('Numero')
                 numeroTag.textContent = numDoc
 
-                //UF 
+                //UF
+                const ufTag = xmlDoc.querySelector('OrgaoGerador > Uf')
+                ufTag.textContent = uf
+
                 //Vencimento
+                const dataVencimentoTag = xmlDoc.querySelector('DataVencimento')
+                dataVencimentoTag.textContent = vencimento + "T00:00:00"
             
                 const updatedXmlContent = new XMLSerializer().serializeToString(xmlDoc)
                 const blob = new Blob([updatedXmlContent], { type: 'text/xml' })
