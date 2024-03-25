@@ -8,7 +8,23 @@ function generateXML() {
     if(cnpj.trim() == "" || dataEmissao.trim() == "" || valor.trim() == "" || numDoc.trim() == "" || vencimento.trim() == "") {
         flashMessage("warning", "Por favor preencha todos os campos")
     } else {
-        flashMessage("success", "TO DO!")
+        flashMessage("success", "Gerando arquivo XML...");
+
+        fetch('layout.xml')
+            .then(response => response.text())
+            .then(xmlContent => {
+                const blob = new Blob([xmlContent], { type: 'text/xml' });
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = numDoc + "-" + dataEmissao +'.xml';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            })
+            .catch(error => {
+                console.log(error)
+                flashMessage("error", "Erro gerando arquivo XML. Por favor tente novamente mais tarde!");
+            });
     }
 }
 
