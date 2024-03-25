@@ -1,5 +1,15 @@
 function generateXML() {
     // TO DO
+    const cnpj = document.getElementById("cnpj").value
+    const dataEmissao = document.getElementById("dataemissao").value
+    const valor = document.getElementById("valor").value
+    const numDoc = document.getElementById("numdoc").value
+    const vencimento = document.getElementById("vencimento").value
+    if(cnpj.trim() == "" || dataEmissao.trim() == "" || valor.trim() == "" || numDoc.trim() == "" || vencimento.trim() == "") {
+        flashMessage("warning", "Por favor preencha todos os campos")
+    } else {
+        flashMessage("success", "TO DO!")
+    }
 }
 
 function flashMessage(type, message) {

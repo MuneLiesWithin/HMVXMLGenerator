@@ -83,7 +83,7 @@ legend {
 #message {
     border-radius: 10px;
     position: fixed;
-    top: 200px; 
+    top: 175px; 
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000; 
