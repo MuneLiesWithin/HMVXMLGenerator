@@ -4,8 +4,7 @@ function generateXML() {
     const valor = document.getElementById("valor").value
     const numDoc = document.getElementById("numdoc").value
     const uf = document.getElementById("uf").value
-    const vencimento = document.getElementById("vencimento").value
-    if(cnpj.trim() == "" || dataEmissao.trim() == "" || valor.trim() == "" || numDoc.trim() == "" || uf.trim() == "" || vencimento.trim() == "") {
+    if(cnpj.trim() == "" || dataEmissao.trim() == "" || valor.trim() == "" || numDoc.trim() == "" || uf.trim() == "") {
         flashMessage("warning", "Por favor preencha todos os campos")
     } else {
         flashMessage("success", "Gerando arquivo XML...");
@@ -39,10 +38,6 @@ function generateXML() {
                 //UF
                 const ufTag = xmlDoc.querySelector('OrgaoGerador > Uf')
                 ufTag.textContent = uf
-
-                //Vencimento
-                const dataVencimentoTag = xmlDoc.querySelector('DataVencimento')
-                dataVencimentoTag.textContent = vencimento + "T00:00:00"
             
                 const updatedXmlContent = new XMLSerializer().serializeToString(xmlDoc)
                 const blob = new Blob([updatedXmlContent], { type: 'text/xml' })
