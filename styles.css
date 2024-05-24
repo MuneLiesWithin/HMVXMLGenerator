@@ -34,12 +34,14 @@ footer {
 .container {
     border: 2px solid rgb(7, 81, 146);
     border-radius: 10px;
-    width: 350px;
-    height: 380px;
-    margin: 250px auto auto auto;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    padding: 1.5em;
+    transform: translate(-50%, -50%);
     display: flex;  
     justify-content: center;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
 }
 
@@ -50,20 +52,36 @@ button {
     color: white;
     transition: .5s;
     border-radius: 5px;
+    margin-top: 5px;
 }
 
 button:hover{
     background-color: rgb(150, 22, 22);
     cursor: pointer;
 }
+
 button:active{
     color:rgb(143, 65, 65);
 }
 
-.form button {
-    margin-top: 7px;
-    margin-left: 40px
+.form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.deathandtaxes,
+.isuck {
+    margin-left: 1em;
+}
+
 
 input {
     border-color: rgb(7, 81, 146);
@@ -74,7 +92,7 @@ input {
 }
 
 legend {
-    margin-left: 7em;
+    text-align: center;
     font-weight: bold;
 }
 
@@ -83,11 +101,11 @@ legend {
 #message {
     border-radius: 10px;
     position: fixed;
-    top: 175px; 
+    top: 25%; 
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000; 
-    padding: 10px;
+    padding: 5px;
     font-weight: bold;
 }
 

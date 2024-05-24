@@ -20,18 +20,33 @@
     <fieldset class="container">
         <legend>Gerador de XML</legend>
         <div class="form">
-            <label for="cnpj">CNPJ Prestador:</label><br>
-            <input type="text" id="cnpj" onkeypress="handleKeyPress(event, 'generateXML')"><br>
-            <label for="dataemissao">Data Emissão:</label><br>
-            <input type="date" id="dataemissao" onkeypress="handleKeyPress(event, 'generateXML')"><br>
-            <label for="valor">Valor:</label><br>
-            <input type="text" id="valor" onkeypress="handleKeyPress(event, 'generateXML')"><br>
-            <label for="numdoc">Número Documento:</label><br>
-            <input type="text" id="numdoc" onkeypress="handleKeyPress(event, 'generateXML')"><br>
-            <label for="uf">UF Prestador:</label><br>
-            <input type="text" id="uf" onkeypress="handleKeyPress(event, 'generateXML')"><br>
-            <button onclick="generateXML()" id="generateXML">Gerar XML</button>
+            <div class="normal">
+                <label for="cnpj">CNPJ Prestador:</label><br>
+                <input type="text" id="cnpj" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <label for="dataemissao">Data Emissão:</label><br>
+                <input type="date" id="dataemissao" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <label for="valor">Valor:</label><br>
+                <input type="text" id="valor" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <label for="numdoc">Número Documento:</label><br>
+                <input type="text" id="numdoc" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <label for="uf">UF Prestador:</label><br>
+                <input type="text" id="uf" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+            </div>
+            <!--IMPOSTOS-->
+            <div class="deathandtaxes">
+                <label for="pis">Pis:</label><br>
+                <input type="text" id="pis" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <label for="cofins">Cofins:</label><br>
+                <input type="text" id="cofins" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <label for="ir">IR:</label><br>
+                <input type="text" id="ir" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <label for="csll">Csll:</label><br>
+                <input type="text" id="csll" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <label for="iss">Iss:</label><br>
+                <input type="text" id="iss" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+            </div>
         </div>
+        <button onclick="generateXML()" id="generateXML">Gerar XML</button>
     </fieldset>
     <footer>
         <p>Power Imaging<sup>&copy;</sup> 2024</p>

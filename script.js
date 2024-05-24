@@ -1,14 +1,29 @@
 function generateXML() {
+
     const cnpj = document.getElementById("cnpj").value
     const dataEmissao = document.getElementById("dataemissao").value
     const valor = document.getElementById("valor").value
     const numDoc = document.getElementById("numdoc").value
     const uf = document.getElementById("uf").value
-    if(cnpj.trim() == "" || dataEmissao.trim() == "" || valor.trim() == "" || numDoc.trim() == "" || uf.trim() == "") {
-        flashMessage("warning", "Por favor preencha todos os campos")
-    } else {
-        flashMessage("success", "Gerando arquivo XML...");
 
+    /* IMPOSTOS */
+    const pis = document.getElementById("pis").value
+    const cofins = document.getElementById("cofins").value
+    const ir = document.getElementById("ir").value
+    const csll = document.getElementById("csll").value
+    const iss = document.getElementById("iss").value
+
+    if(cnpj.trim() == "") {
+        flashMessage("warning", "Por favor informe um CNPJ")
+    } else if(dataEmissao.trim() == "") {
+        flashMessage("warning", "Por favor informe uma data de emissão")
+    } else if(valor.trim() == "") {
+        flashMessage("warning", "Por favor informe um valor")
+    } else if(numDoc.trim() == "") {
+        flashMessage("warning", "Por favor informe o número do documento")
+    } else if(uf.trim() == "") {
+        flashMessage("warning", "Por favor informe o UF")
+    } else {
         fetch('layout.xml')
             .then(response => response.text())
             .then(xmlContent => {
@@ -37,7 +52,37 @@ function generateXML() {
 
                 //UF
                 const ufTag = xmlDoc.querySelector('OrgaoGerador > Uf')
+		        const ufTag2 = xmlDoc.querySelector('PrestadorServico > Endereco > Uf')
                 ufTag.textContent = uf
+		        ufTag2.textContent = uf
+
+                //Impostos
+                if(pis.trim() != "") {
+                    const pisTag = xmlDoc.querySelector('Valores > ValorPis')
+                    pisTag.textContent = pis
+                }
+
+                if(cofins.trim() != "") {
+                    const cofinsTag = xmlDoc.querySelector('Valores > ValorCofins')
+                    cofinsTag.textContent = cofins
+                }
+
+                if(ir.trim() != "") {
+                    const irTag = xmlDoc.querySelector('Valores > ValorIr')
+                    irTag.textContent = ir
+                }
+
+                if(csll.trim() != "") {
+                    const csllTag = xmlDoc.querySelector('Valores > ValorCsll')
+                    csllTag.textContent = csll
+                }
+
+                if(iss.trim() != "") {
+                    const issTag = xmlDoc.querySelector('Valores > ValorIss')
+                    issTag.textContent = iss
+                }
+
+                flashMessage("success", "Gerando arquivo XML");
             
                 const updatedXmlContent = new XMLSerializer().serializeToString(xmlDoc)
                 const blob = new Blob([updatedXmlContent], { type: 'text/xml' })
@@ -50,8 +95,8 @@ function generateXML() {
                 document.body.removeChild(link)
             })
             .catch(error => {
+                flashMessage("error", "Erro gerando arquivo XML");
                 console.log(error)
-                flashMessage("error", "Erro gerando arquivo XML. Por favor tente novamente mais tarde!");
             });
     }
 }
