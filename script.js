@@ -98,7 +98,7 @@ function generateXML() {
 
                 // VALOR LÍQUIDO
                 const valorLiquidoTag = xmlDoc.querySelector('Valores > ValorLiquidoNfse')
-                valorLiquidoTag.textContent = valor
+                valorLiquidoTag.textContent = valor.toFixed(2).replace('.', ',')
 
                 flashMessage("success", "Gerando arquivo XML")
             
