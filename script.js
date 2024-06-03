@@ -45,6 +45,8 @@ function generateXML() {
                 valorServicoTag.textContent = valor
                 const valorLiquidoTag = xmlDoc.querySelector('Valores > ValorLiquidoNfse')
                 valorLiquidoTag.textContent = valor
+                const baseCalculoTag = xmlDoc.querySelector('Valores > BaseCalculo')
+                baseCalculoTag.textContent = valor
 
                 //Número Documento
                 const numeroTag = xmlDoc.querySelector('Numero')
