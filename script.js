@@ -2,7 +2,7 @@ function generateXML() {
 
     const cnpj = document.getElementById("cnpj").value
     const dataEmissao = document.getElementById("dataemissao").value
-    const valor = document.getElementById("valor").value
+    let valor = document.getElementById("valor").value
     const numDoc = document.getElementById("numdoc").value
     const uf = document.getElementById("uf").value
 
