@@ -43,8 +43,6 @@ function generateXML() {
                 //Valor
                 const valorServicoTag = xmlDoc.querySelector('Valores > ValorServicos')
                 valorServicoTag.textContent = valor
-                const valorLiquidoTag = xmlDoc.querySelector('Valores > ValorLiquidoNfse')
-                valorLiquidoTag.textContent = valor
                 const baseCalculoTag = xmlDoc.querySelector('Valores > BaseCalculo')
                 baseCalculoTag.textContent = valor
 
@@ -62,27 +60,36 @@ function generateXML() {
                 if(pis.trim() != "") {
                     const pisTag = xmlDoc.querySelector('Valores > ValorPis')
                     pisTag.textContent = pis
+                    valor = valor - pis
                 }
 
                 if(cofins.trim() != "") {
                     const cofinsTag = xmlDoc.querySelector('Valores > ValorCofins')
                     cofinsTag.textContent = cofins
+                    valor = valor - cofins
                 }
 
                 if(ir.trim() != "") {
                     const irTag = xmlDoc.querySelector('Valores > ValorIr')
                     irTag.textContent = ir
+                    valor = valor - ir
                 }
 
                 if(csll.trim() != "") {
                     const csllTag = xmlDoc.querySelector('Valores > ValorCsll')
                     csllTag.textContent = csll
+                    valor = valor - csll
                 }
 
                 if(iss.trim() != "") {
                     const issTag = xmlDoc.querySelector('Valores > ValorIss')
                     issTag.textContent = iss
+                    valor = valor - iss
                 }
+
+                //VALOR LÍQUIDO
+                const valorLiquidoTag = xmlDoc.querySelector('Valores > ValorLiquidoNfse')
+                valorLiquidoTag.textContent = valor
 
                 flashMessage("success", "Gerando arquivo XML");
             
