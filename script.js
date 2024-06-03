@@ -56,76 +56,76 @@ function generateXML() {
                 ufTag.textContent = uf
 		        ufTag2.textContent = uf
 
-                valor = parseFloat(valor);
+                valor = parseFloat(valor)
 
                 // Impostos
                 if(pis.trim() !== "") {
-                    const pisTag = xmlDoc.querySelector('Valores > ValorPis');
-                    pisTag.textContent = pis;
-                    valor -= parseFloat(pis);
+                    const pisTag = xmlDoc.querySelector('Valores > ValorPis')
+                    pisTag.textContent = pis
+                    valor -= parseFloat(pis)
                 }
 
                 if(cofins.trim() !== "") {
                     const cofinsTag = xmlDoc.querySelector('Valores > ValorCofins');
-                    cofinsTag.textContent = cofins;
-                    valor -= parseFloat(cofins);
+                    cofinsTag.textContent = cofins
+                    valor -= parseFloat(cofins)
                 }
 
                 if(ir.trim() !== "") {
                     const irTag = xmlDoc.querySelector('Valores > ValorIr');
-                    irTag.textContent = ir;
-                    valor -= parseFloat(ir);
+                    irTag.textContent = ir
+                    valor -= parseFloat(ir)
                 }
 
                 if(csll.trim() !== "") {
-                    const csllTag = xmlDoc.querySelector('Valores > ValorCsll');
-                    csllTag.textContent = csll;
-                    valor -= parseFloat(csll);
+                    const csllTag = xmlDoc.querySelector('Valores > ValorCsll')
+                    csllTag.textContent = csll
+                    valor -= parseFloat(csll)
                 }
 
                 if(iss.trim() !== "") {
-                    const issTag = xmlDoc.querySelector('Valores > ValorIss');
-                    issTag.textContent = iss;
-                    valor -= parseFloat(iss);
+                    const issTag = xmlDoc.querySelector('Valores > ValorIss')
+                    issTag.textContent = iss
+                    valor -= parseFloat(iss)
                 }
 
                 // VALOR LÍQUIDO
-                const valorLiquidoTag = xmlDoc.querySelector('Valores > ValorLiquidoNfse');
-                valorLiquidoTag.textContent = valor
+                const valorLiquidoTag = xmlDoc.querySelector('Valores > ValorLiquidoNfse')
+                valorLiquidoTag.textContent = valor.toFixed(2)
 
-                flashMessage("success", "Gerando arquivo XML");
+                flashMessage("success", "Gerando arquivo XML")
             
                 const updatedXmlContent = new XMLSerializer().serializeToString(xmlDoc)
                 const blob = new Blob([updatedXmlContent], { type: 'text/xml' })
 
                 const link = document.createElement('a')
-                link.href = window.URL.createObjectURL(blob);
+                link.href = window.URL.createObjectURL(blob)
                 link.download = numDoc + '.xml'
                 document.body.appendChild(link)
                 link.click()
                 document.body.removeChild(link)
             })
             .catch(error => {
-                flashMessage("error", "Erro gerando arquivo XML");
+                flashMessage("error", "Erro gerando arquivo XML")
                 console.log(error)
             });
     }
 }
 
 function flashMessage(type, message) {
-    const messageElement = document.getElementById("message");
-    messageElement.classList.add(type);
-    messageElement.innerHTML = message;
+    const messageElement = document.getElementById("message")
+    messageElement.classList.add(type)
+    messageElement.innerHTML = message
     setTimeout(() => {
-        messageElement.innerHTML = "";
-        messageElement.classList.remove(type);
-    }, 3000);
+        messageElement.innerHTML = ""
+        messageElement.classList.remove(type)
+    }, 3000)
 }
 
 function handleKeyPress(event, buttonId) {
     if (event.key === 'Enter') {
-        event.preventDefault(); 
-        document.getElementById(buttonId).click(); 
+        event.preventDefault()
+        document.getElementById(buttonId).click()
     }
 }
 
