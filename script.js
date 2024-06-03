@@ -90,7 +90,7 @@ function generateXML() {
                     valor -= parseFloat(iss.replace(',', '.'))
                 }
 
-                if(iss.trim() !== "") {
+                if(inss.trim() !== "") {
                     const inssTag = xmlDoc.querySelector('Valores > ValorInss')
                     inssTag.textContent = inss
                     valor -= parseFloat(inss.replace(',', '.'))
