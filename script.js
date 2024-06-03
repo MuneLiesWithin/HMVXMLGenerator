@@ -56,37 +56,37 @@ function generateXML() {
                 ufTag.textContent = uf
 		        ufTag2.textContent = uf
 
-                valor = parseFloat(valor)
+                valor = parseFloat(valor.replace(',', '.'))
 
                 // Impostos
                 if(pis.trim() !== "") {
                     const pisTag = xmlDoc.querySelector('Valores > ValorPis')
                     pisTag.textContent = pis
-                    valor -= parseFloat(pis)
+                    valor -= parseFloat(pis.replace(',', '.'))
                 }
 
                 if(cofins.trim() !== "") {
                     const cofinsTag = xmlDoc.querySelector('Valores > ValorCofins');
                     cofinsTag.textContent = cofins
-                    valor -= parseFloat(cofins)
+                    valor -= parseFloat(cofins.replace(',', '.'))
                 }
 
                 if(ir.trim() !== "") {
                     const irTag = xmlDoc.querySelector('Valores > ValorIr');
                     irTag.textContent = ir
-                    valor -= parseFloat(ir)
+                    valor -= parseFloat(ir.replace(',', '.'))
                 }
 
                 if(csll.trim() !== "") {
                     const csllTag = xmlDoc.querySelector('Valores > ValorCsll')
                     csllTag.textContent = csll
-                    valor -= parseFloat(csll)
+                    valor -= parseFloat(csll.replace(',', '.'))
                 }
 
                 if(iss.trim() !== "") {
                     const issTag = xmlDoc.querySelector('Valores > ValorIss')
                     issTag.textContent = iss
-                    valor -= parseFloat(iss)
+                    valor -= parseFloat(iss.replace(',', '.'))
                 }
 
                 // VALOR LÍQUIDO
