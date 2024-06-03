@@ -12,6 +12,7 @@ function generateXML() {
     const ir = document.getElementById("ir").value
     const csll = document.getElementById("csll").value
     const iss = document.getElementById("iss").value
+    const inss = document.getElementById("inss").value
 
     if(cnpj.trim() == "") {
         flashMessage("warning", "Por favor informe um CNPJ")
@@ -87,6 +88,12 @@ function generateXML() {
                     const issTag = xmlDoc.querySelector('Valores > ValorIss')
                     issTag.textContent = iss
                     valor -= parseFloat(iss.replace(',', '.'))
+                }
+
+                if(iss.trim() !== "") {
+                    const inssTag = xmlDoc.querySelector('Valores > ValorInss')
+                    inssTag.textContent = inss
+                    valor -= parseFloat(inss.replace(',', '.'))
                 }
 
                 // VALOR LÍQUIDO
