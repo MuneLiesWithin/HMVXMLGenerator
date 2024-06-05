@@ -26,7 +26,7 @@
                 <label for="dataemissao">Data Emissão:</label><br>
                 <input type="date" id="dataemissao" onkeypress="handleKeyPress(event, 'generateXML')"><br>
                 <label for="valor">Valor:</label><br>
-                <input type="text" id="valor" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <input type="float" id="valor" onkeypress="handleKeyPress(event, 'generateXML')"><br>
                 <label for="numdoc">Número Documento:</label><br>
                 <input type="text" id="numdoc" onkeypress="handleKeyPress(event, 'generateXML')"><br>
                 <label for="uf">UF Prestador:</label><br>
@@ -63,17 +63,17 @@
             <!--IMPOSTOS-->
             <div class="deathandtaxes">
                 <label for="pis">Pis:</label><br>
-                <input type="text" id="pis" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <input type="float" id="pis" onkeypress="handleKeyPress(event, 'generateXML')"><br>
                 <label for="cofins">Cofins:</label><br>
-                <input type="text" id="cofins" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <input type="float" id="cofins" onkeypress="handleKeyPress(event, 'generateXML')"><br>
                 <label for="ir">IR:</label><br>
-                <input type="text" id="ir" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <input type="float" id="ir" onkeypress="handleKeyPress(event, 'generateXML')"><br>
                 <label for="csll">Csll:</label><br>
-                <input type="text" id="csll" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <input type="float" id="csll" onkeypress="handleKeyPress(event, 'generateXML')"><br>
                 <label for="iss">Iss:</label><br>
-                <input type="text" id="iss" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <input type="float" id="iss" onkeypress="handleKeyPress(event, 'generateXML')"><br>
                 <label for="iss">Inss:</label><br>
-                <input type="text" id="inss" onkeypress="handleKeyPress(event, 'generateXML')"><br>
+                <input type="float" id="inss" onkeypress="handleKeyPress(event, 'generateXML')"><br>
             </div>
         </div>
         <button onclick="generateXML()" id="generateXML">Gerar XML</button>

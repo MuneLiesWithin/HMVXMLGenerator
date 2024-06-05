@@ -42,8 +42,6 @@ function generateXML() {
                 dataEmissaoTag.textContent = dataEmissao + "T00:00:00"
 
                 //Valor
-                valor = parseFloat(valor.replace('.', '').replace(',', '.'))
-
                 const valorServicoTag = xmlDoc.querySelector('Valores > ValorServicos')
                 valorServicoTag.textContent = valor
                 const baseCalculoTag = xmlDoc.querySelector('Valores > BaseCalculo')
@@ -64,37 +62,37 @@ function generateXML() {
                 if(pis.trim() !== "") {
                     const pisTag = xmlDoc.querySelector('Valores > ValorPis')
                     pisTag.textContent = pis
-                    valor -= parseFloat(pis.replace('.', '').replace(',', '.'))
+                    valor -= pis
                 }
 
                 if(cofins.trim() !== "") {
                     const cofinsTag = xmlDoc.querySelector('Valores > ValorCofins');
                     cofinsTag.textContent = cofins
-                    valor -= parseFloat(cofins.replace('.', '').replace(',', '.'))
+                    valor -= cofins
                 }
 
                 if(ir.trim() !== "") {
                     const irTag = xmlDoc.querySelector('Valores > ValorIr');
                     irTag.textContent = ir
-                    valor -= parseFloat(ir.replace('.', '').replace(',', '.'))
+                    valor -= ir
                 }
 
                 if(csll.trim() !== "") {
                     const csllTag = xmlDoc.querySelector('Valores > ValorCsll')
                     csllTag.textContent = csll
-                    valor -= parseFloat(csll.replace('.', '').replace(',', '.'))
+                    valor -= csll
                 }
 
                 if(iss.trim() !== "") {
                     const issTag = xmlDoc.querySelector('Valores > ValorIss')
                     issTag.textContent = iss
-                    valor -= parseFloat(iss.replace('.', '').replace(',', '.'))
+                    valor -= iss
                 }
 
                 if(inss.trim() !== "") {
                     const inssTag = xmlDoc.querySelector('Valores > ValorInss')
                     inssTag.textContent = inss
-                    valor -= parseFloat(inss.replace('.', '').replace(',', '.'))
+                    valor -= inss
                 }
 
                 // VALOR LÍQUIDO
