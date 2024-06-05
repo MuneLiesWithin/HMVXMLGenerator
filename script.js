@@ -31,27 +31,27 @@ function generateXML() {
                 const parser = new DOMParser()
                 const xmlDoc = parser.parseFromString(xmlContent, 'text/xml')
 
-                //CNPJ
+                // CNPJ
                 const cnpjTag = xmlDoc.querySelector('IdentificacaoPrestador > Cnpj')
                 cnpjTag.textContent = cnpj
 
-                //Data Emissão
+                // Data Emissão
                 const competenciaTag = xmlDoc.querySelector('Competencia')
                 competenciaTag.textContent = dataEmissao + "T00:00:00"
                 const dataEmissaoTag = xmlDoc.querySelector('DataEmissao')
                 dataEmissaoTag.textContent = dataEmissao + "T00:00:00"
 
-                //Valor
+                // Valor
                 const valorServicoTag = xmlDoc.querySelector('Valores > ValorServicos')
                 valorServicoTag.textContent = valor
                 const baseCalculoTag = xmlDoc.querySelector('Valores > BaseCalculo')
                 baseCalculoTag.textContent = valor
 
-                //Número Documento
+                // Número Documento
                 const numeroTag = xmlDoc.querySelector('Numero')
                 numeroTag.textContent = numDoc
 
-                //UF
+                // UF
                 const ufTag = xmlDoc.querySelector('OrgaoGerador > Uf')
 		        const ufTag2 = xmlDoc.querySelector('PrestadorServico > Endereco > Uf')
                 ufTag.textContent = uf
@@ -95,7 +95,7 @@ function generateXML() {
                     valor -= inss
                 }
 
-                // VALOR LÍQUIDO
+                // Valor Líquido
                 const valorLiquidoTag = xmlDoc.querySelector('Valores > ValorLiquidoNfse')
                 valorLiquidoTag.textContent = valor
 
