@@ -43,9 +43,9 @@ function generateXML() {
 
                 //Valor
                 const valorServicoTag = xmlDoc.querySelector('Valores > ValorServicos')
-                valorServicoTag.textContent = parseFloat(valor.toFixed(2))
+                valorServicoTag.textContent = valor
                 const baseCalculoTag = xmlDoc.querySelector('Valores > BaseCalculo')
-                baseCalculoTag.textContent = parseFloat(valor.toFixed(2))
+                baseCalculoTag.textContent = valor
 
                 //Número Documento
                 const numeroTag = xmlDoc.querySelector('Numero')
@@ -61,43 +61,43 @@ function generateXML() {
                 // Impostos
                 if(pis.trim() !== "") {
                     const pisTag = xmlDoc.querySelector('Valores > ValorPis')
-                    pisTag.textContent = parseFloat(pis.toFixed(2))
+                    pisTag.textContent = pis
                     valor -= pis
                 }
 
                 if(cofins.trim() !== "") {
                     const cofinsTag = xmlDoc.querySelector('Valores > ValorCofins');
-                    cofinsTag.textContent = parseFloat(cofins.toFixed(2))
+                    cofinsTag.textContent = cofins
                     valor -= cofins
                 }
 
                 if(ir.trim() !== "") {
                     const irTag = xmlDoc.querySelector('Valores > ValorIr');
-                    irTag.textContent = parseFloat(ir.toFixed(2))
+                    irTag.textContent = ir
                     valor -= ir
                 }
 
                 if(csll.trim() !== "") {
                     const csllTag = xmlDoc.querySelector('Valores > ValorCsll')
-                    csllTag.textContent = parseFloat(csll.toFixed(2))
+                    csllTag.textContent = csll
                     valor -= csll
                 }
 
                 if(iss.trim() !== "") {
                     const issTag = xmlDoc.querySelector('Valores > ValorIss')
-                    issTag.textContent = parseFloat(iss.toFixed(2))
+                    issTag.textContent = iss
                     valor -= iss
                 }
 
                 if(inss.trim() !== "") {
                     const inssTag = xmlDoc.querySelector('Valores > ValorInss')
-                    inssTag.textContent = parseFloat(inss.toFixed(2))
+                    inssTag.textContent = inss
                     valor -= inss
                 }
 
                 // VALOR LÍQUIDO
                 const valorLiquidoTag = xmlDoc.querySelector('Valores > ValorLiquidoNfse')
-                valorLiquidoTag.textContent = parseFloat(valor.toFixed(2))
+                valorLiquidoTag.textContent = valor
 
                 flashMessage("success", "Gerando arquivo XML")
             
