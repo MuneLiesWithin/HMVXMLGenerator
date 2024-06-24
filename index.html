@@ -21,6 +21,24 @@
         <legend>Gerador de XML</legend>
         <div class="form">
             <div class="normal">
+                <label for="cidade">Cidade:</label><br>
+                <select id="cidade" onchange="handleKeyPress(event, 'generateXML')">
+                    <option value="Porto Alegre">Porto Alegre</option>
+                    <option value="Alvorada">Alvorada</option>
+                    <option value="Barueri">Barueri</option>
+                    <option value="Blumenau">Blumenau</option>
+                    <option value="Campinas">Campinas</option>
+                    <option value="Campo Bom">Campo Bom</option>
+                    <option value="Canoas">Canoas</option>
+                    <option value="Caxias do Sul">Caxias do Sul</option>
+                    <option value="Extrema">Extrema</option>
+                    <option value="Florianópolis">Florianópolis</option>
+                    <option value="Joinville">Joinville</option>
+                    <option value="Nova Santa Rita">Nova Santa Rita</option>
+                    <option value="Recife">Recife</option>
+                    <option value="São Paulo">São Paulo</option>
+                    <option value="Uberlândia">Uberlândia</option>
+                </select><br>
                 <label for="cnpj">CNPJ Prestador:</label><br>
                 <input type="text" id="cnpj" onkeypress="handleKeyPress(event, 'generateXML')"><br>
                 <label for="dataemissao">Data Emissão:</label><br>

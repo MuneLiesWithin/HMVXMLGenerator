@@ -70,15 +70,7 @@ button:active{
     align-items: center;
 }
 
-.actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-.deathandtaxes,
-.isuck {
+.deathandtaxes {
     margin-left: 1em;
 }
 
@@ -126,4 +118,8 @@ legend {
     border: solid 2px rgb(241, 241, 50);
     background-color: rgba(241, 241, 50, 0.7)
 }
+
+/* IMAGENS */
+
+
 
