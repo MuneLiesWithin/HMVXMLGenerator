@@ -36,7 +36,7 @@ footer {
     border-radius: 10px;
     position: absolute;
     top: 60%;
-    left: 50%;
+    left: 30%;
     padding: 1em;
     transform: translate(-50%, -50%);
     display: flex;  
@@ -121,5 +121,13 @@ legend {
 
 /* IMAGENS */
 
-
+.imagens { 
+    border: 2px solid rgb(7, 81, 146);
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    position: fixed;
+    top: 35%;
+    left: 60%;
+}
 
