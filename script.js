@@ -1,120 +1,156 @@
 function generateXML() {
-
-    const cnpj = document.getElementById("cnpj").value
-    const dataEmissao = document.getElementById("dataemissao").value
-    let valor = document.getElementById("valor").value
-    const numDoc = document.getElementById("numdoc").value
-    const uf = document.getElementById("uf").value
+    const cnpj = document.getElementById("cnpj").value;
+    const dataEmissao = document.getElementById("dataemissao").value;
+    let valor = document.getElementById("valor").value.replace(',', '.'); 
+    const numDoc = document.getElementById("numdoc").value;
+    const uf = document.getElementById("uf").value;
 
     /* IMPOSTOS */
-    const pis = document.getElementById("pis").value
-    const cofins = document.getElementById("cofins").value
-    const ir = document.getElementById("ir").value
-    const csll = document.getElementById("csll").value
-    const iss = document.getElementById("iss").value
-    const inss = document.getElementById("inss").value
+    const pis = document.getElementById("pis").value.replace(',', '.'); 
+    const cofins = document.getElementById("cofins").value.replace(',', '.'); 
+    const ir = document.getElementById("ir").value.replace(',', '.'); 
+    const csll = document.getElementById("csll").value.replace(',', '.'); 
+    const iss = document.getElementById("iss").value.replace(',', '.'); 
+    const inss = document.getElementById("inss").value.replace(',', '.'); 
 
-    if(cnpj.trim() == "") {
-        flashMessage("warning", "Por favor informe um CNPJ")
-    } else if(dataEmissao.trim() == "") {
-        flashMessage("warning", "Por favor informe uma data de emissão")
-    } else if(valor.trim() == "") {
-        flashMessage("warning", "Por favor informe um valor")
-    } else if(numDoc.trim() == "") {
-        flashMessage("warning", "Por favor informe o número do documento")
-    } else if(uf.trim() == "") {
-        flashMessage("warning", "Por favor informe o UF")
+    if (cnpj.trim() == "") {
+        flashMessage("warning", "Por favor informe um CNPJ");
+    } else if (dataEmissao.trim() == "") {
+        flashMessage("warning", "Por favor informe uma data de emissão");
+    } else if (valor.trim() == "") {
+        flashMessage("warning", "Por favor informe um valor");
+    } else if (numDoc.trim() == "") {
+        flashMessage("warning", "Por favor informe o número do documento");
+    } else if (uf.trim() == "") {
+        flashMessage("warning", "Por favor informe o UF");
     } else {
         fetch('layout.xml')
             .then(response => response.text())
             .then(xmlContent => {
-                const parser = new DOMParser()
-                const xmlDoc = parser.parseFromString(xmlContent, 'text/xml')
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlContent, 'text/xml');
 
                 // CNPJ
-                const cnpjTag = xmlDoc.querySelector('IdentificacaoPrestador > Cnpj')
-                cnpjTag.textContent = cnpj
+                const cnpjTag = xmlDoc.querySelector('IdentificacaoPrestador > Cnpj');
+                cnpjTag.textContent = cnpj;
 
                 // Data Emissão
-                const competenciaTag = xmlDoc.querySelector('Competencia')
-                competenciaTag.textContent = dataEmissao + "T00:00:00"
-                const dataEmissaoTag = xmlDoc.querySelector('DataEmissao')
-                dataEmissaoTag.textContent = dataEmissao + "T00:00:00"
+                const competenciaTag = xmlDoc.querySelector('Competencia');
+                competenciaTag.textContent = dataEmissao + "T00:00:00";
+                const dataEmissaoTag = xmlDoc.querySelector('DataEmissao');
+                dataEmissaoTag.textContent = dataEmissao + "T00:00:00";
 
                 // Valor
-                const valorServicoTag = xmlDoc.querySelector('Valores > ValorServicos')
-                valorServicoTag.textContent = valor
-                const baseCalculoTag = xmlDoc.querySelector('Valores > BaseCalculo')
-                baseCalculoTag.textContent = valor
+                const valorServicoTag = xmlDoc.querySelector('Valores > ValorServicos');
+                valorServicoTag.textContent = valor.replace('.', ','); 
+                const baseCalculoTag = xmlDoc.querySelector('Valores > BaseCalculo');
+                baseCalculoTag.textContent = valor.replace('.', ','); 
 
                 // Número Documento
-                const numeroTag = xmlDoc.querySelector('Numero')
-                numeroTag.textContent = numDoc
+                const numeroTag = xmlDoc.querySelector('Numero');
+                numeroTag.textContent = numDoc;
 
                 // UF
-                const ufTag = xmlDoc.querySelector('OrgaoGerador > Uf')
-		        const ufTag2 = xmlDoc.querySelector('PrestadorServico > Endereco > Uf')
-                ufTag.textContent = uf
-		        ufTag2.textContent = uf
-
+                const ufTag = xmlDoc.querySelector('OrgaoGerador > Uf');
+                const ufTag2 = xmlDoc.querySelector('PrestadorServico > Endereco > Uf');
+                ufTag.textContent = uf;
+                ufTag2.textContent = uf;
 
                 // Impostos
-                if(pis.trim() !== "") {
-                    const pisTag = xmlDoc.querySelector('Valores > ValorPis')
-                    pisTag.textContent = pis
-                    valor -= pis
+                let valorNum = parseFloat(valor);
+
+                if (pis.trim() !== "") {
+                    const pisTag = xmlDoc.querySelector('Valores > ValorPis');
+                    pisTag.textContent = pis.replace('.', ','); 
+                    valorNum -= parseFloat(pis);
                 }
 
-                if(cofins.trim() !== "") {
+                if (cofins.trim() !== "") {
                     const cofinsTag = xmlDoc.querySelector('Valores > ValorCofins');
-                    cofinsTag.textContent = cofins
-                    valor -= cofins
+                    cofinsTag.textContent = cofins.replace('.', ','); 
+                    valorNum -= parseFloat(cofins);
                 }
 
-                if(ir.trim() !== "") {
+                if (ir.trim() !== "") {
                     const irTag = xmlDoc.querySelector('Valores > ValorIr');
-                    irTag.textContent = ir
-                    valor -= ir
+                    irTag.textContent = ir.replace('.', ','); 
+                    valorNum -= parseFloat(ir);
                 }
 
-                if(csll.trim() !== "") {
-                    const csllTag = xmlDoc.querySelector('Valores > ValorCsll')
-                    csllTag.textContent = csll
-                    valor -= csll
+                if (csll.trim() !== "") {
+                    const csllTag = xmlDoc.querySelector('Valores > ValorCsll');
+                    csllTag.textContent = csll.replace('.', ','); 
+                    valorNum -= parseFloat(csll);
                 }
 
-                if(iss.trim() !== "") {
-                    const issTag = xmlDoc.querySelector('Valores > ValorIss')
-                    issTag.textContent = iss
-                    valor -= iss
+                if (iss.trim() !== "") {
+                    const issTag = xmlDoc.querySelector('Valores > ValorIss');
+                    issTag.textContent = iss.replace('.', ','); 
+                    valorNum -= parseFloat(iss);
                 }
 
-                if(inss.trim() !== "") {
-                    const inssTag = xmlDoc.querySelector('Valores > ValorInss')
-                    inssTag.textContent = inss
-                    valor -= inss
+                if (inss.trim() !== "") {
+                    const inssTag = xmlDoc.querySelector('Valores > ValorInss');
+                    inssTag.textContent = inss.replace('.', ','); 
+                    valorNum -= parseFloat(inss);
                 }
 
                 // Valor Líquido
-                const valorLiquidoTag = xmlDoc.querySelector('Valores > ValorLiquidoNfse')
-                valorLiquidoTag.textContent = valor
+                const valorLiquidoTag = xmlDoc.querySelector('Valores > ValorLiquidoNfse');
+                valorLiquidoTag.textContent = valorNum.toFixed(2).replace('.', ','); 
+                flashMessage("success", "Gerando arquivo XML");
 
-                flashMessage("success", "Gerando arquivo XML")
-            
-                const updatedXmlContent = new XMLSerializer().serializeToString(xmlDoc)
-                const blob = new Blob([updatedXmlContent], { type: 'text/xml' })
+                const updatedXmlContent = new XMLSerializer().serializeToString(xmlDoc);
+                const blob = new Blob([updatedXmlContent], { type: 'text/xml' });
 
-                const link = document.createElement('a')
-                link.href = window.URL.createObjectURL(blob)
-                link.download = numDoc + '.xml'
-                document.body.appendChild(link)
-                link.click()
-                document.body.removeChild(link)
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = numDoc + '.xml';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
             })
             .catch(error => {
-                flashMessage("error", "Erro gerando arquivo XML")
-                console.log(error)
+                flashMessage("error", "Erro gerando arquivo XML");
+                console.log(error);
             });
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const numericFields = ['pis', 'cofins', 'ir', 'csll', 'iss', 'inss', 'valor'];
+    numericFields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        field.addEventListener('input', validateInput);
+        field.addEventListener('keypress', isNumberKey);
+    });
+});
+
+function isNumberKey(evt) {
+    const charCode = evt.which ? evt.which : evt.keyCode;
+    const input = evt.target;
+    const value = input.value;
+
+    if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 44) {
+        return false;
+    }
+
+    if (charCode === 44 && value.includes(',')) {
+        return false;
+    }
+
+    return true;
+}
+
+function validateInput(input) {
+    let value = input.value;
+    
+    input.value = value.replace(/[^0-9,]/g, '');
+
+    const parts = input.value.split(',');
+    if (parts.length > 2) {
+        input.value = parts[0] + ',' + parts.slice(1).join('');
     }
 }
 
