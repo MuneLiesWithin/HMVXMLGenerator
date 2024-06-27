@@ -123,7 +123,7 @@ function showImage(inputId, cidade) {
     imagensDiv.innerHTML = ''
 
     const img = document.createElement('img')
-    img.src = `/Imagens/${cidade}/${inputId}.png`
+    img.src = `Imagens/${cidade}/${inputId}.png`
     img.alt = `${cidade} - ${inputId}`
 
     imagensDiv.appendChild(img)
