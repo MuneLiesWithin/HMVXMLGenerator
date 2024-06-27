@@ -117,13 +117,34 @@ function generateXML() {
     }
 }
 
+function showImage(inputId, cidade) {
+    const imagensDiv = document.getElementById('imagens')
+    imagensDiv.classList.add('imagenshow')
+    imagensDiv.innerHTML = ''
+
+    const img = document.createElement('img')
+    img.src = `/Imagens/${cidade}/${inputId}.png`
+    img.alt = `${cidade} - ${inputId}`
+
+    imagensDiv.appendChild(img)
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    const numericFields = ['pis', 'cofins', 'ir', 'csll', 'iss', 'inss', 'valor'];
+    const numericFields = ['pis', 'cofins', 'ir', 'csll', 'iss', 'inss', 'valor']
     numericFields.forEach(fieldId => {
-        const field = document.getElementById(fieldId);
-        field.addEventListener('input', validateInput);
-        field.addEventListener('keypress', isNumberKey);
+        const field = document.getElementById(fieldId)
+        field.addEventListener('input', () => validateInput(field))
+        field.addEventListener('keypress', isNumberKey)
+    });
+
+    const inputFields = document.querySelectorAll('input')
+    const cidadeSelect = document.getElementById('cidade')
+
+    inputFields.forEach(input => {
+        input.addEventListener('click', function() {
+            console.log(`Input field with ID '${input.id}' was clicked. Selected town: ${cidadeSelect.value}`)
+            showImage(input.id, cidadeSelect.value)
+        });
     });
 });
 

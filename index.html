@@ -23,21 +23,22 @@
             <div class="normal">
                 <label for="cidade">Cidade:</label><br>
                 <select id="cidade" onchange="handleKeyPress(event, 'generateXML')">
-                    <option value="Porto Alegre">Porto Alegre</option>
+                    <option value="PortoAlegre">Porto Alegre</option>
                     <option value="Alvorada">Alvorada</option>
                     <option value="Barueri">Barueri</option>
                     <option value="Blumenau">Blumenau</option>
                     <option value="Campinas">Campinas</option>
-                    <option value="Campo Bom">Campo Bom</option>
+                    <option value="CampoBom">Campo Bom</option>
                     <option value="Canoas">Canoas</option>
-                    <option value="Caxias do Sul">Caxias do Sul</option>
+                    <option value="CaxiasDoSul">Caxias do Sul</option>
                     <option value="Extrema">Extrema</option>
-                    <option value="Florianópolis">Florianópolis</option>
+                    <option value="Florianopolis">Florianópolis</option>
+                    <option value="Itajai">Itajaí</option>
                     <option value="Joinville">Joinville</option>
-                    <option value="Nova Santa Rita">Nova Santa Rita</option>
+                    <option value="NovaSantaRita">Nova Santa Rita</option>
                     <option value="Recife">Recife</option>
-                    <option value="São Paulo">São Paulo</option>
-                    <option value="Uberlândia">Uberlândia</option>
+                    <option value="SaoPaulo">São Paulo</option>
+                    <option value="Uberlandia">Uberlândia</option>
                 </select><br>
                 <label for="cnpj">CNPJ Prestador:</label><br>
                 <input type="text" id="cnpj" onkeypress="handleKeyPress(event, 'generateXML')"><br>
@@ -96,7 +97,7 @@
         </div>
         <button onclick="generateXML()" id="generateXML">Gerar XML</button>
     </fieldset>
-    <div class="imagens"></div>
+    <div id="imagens"></div>
     <footer>
         <p>Power Imaging<sup>&copy;</sup> 2024</p>
     </footer>
