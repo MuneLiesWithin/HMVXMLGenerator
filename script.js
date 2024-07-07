@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     inputFields.forEach(input => {
         input.addEventListener('click', function() {
-            console.log(`Input field with ID '${input.id}' was clicked. Selected town: ${cidadeSelect.value}`)
+            //console.log(`Input field with ID '${input.id}' was clicked. Selected town: ${cidadeSelect.value}`)
             showImage(input.id, cidadeSelect.value)
         });
     });
