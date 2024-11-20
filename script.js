@@ -11,7 +11,8 @@ function generateXML() {
     const ir = document.getElementById("ir").value.replace(',', '.'); 
     const csll = document.getElementById("csll").value.replace(',', '.'); 
     const iss = document.getElementById("iss").value.replace(',', '.'); 
-    const inss = document.getElementById("inss").value.replace(',', '.'); 
+    const inss = document.getElementById("inss").value.replace(',', '.');
+    const aliquota = document.getElementById("aliquota").value.replace(',', '.'); 
 
     if (cnpj.trim() == "") {
         flashMessage("warning", "Por favor informe um CNPJ");
@@ -93,6 +94,11 @@ function generateXML() {
                     const inssTag = xmlDoc.querySelector('Valores > ValorInss');
                     inssTag.textContent = inss.replace('.', ','); 
                     valorNum -= parseFloat(inss);
+                }
+
+                if (aliquota.trim() !== "") {
+                    const aliquotaTag = xmlDoc.querySelector('Valores > Aliquota');
+                    aliquotaTag.textContent = aliquota.replace('.', ','); 
                 }
 
                 // Valor Líquido
