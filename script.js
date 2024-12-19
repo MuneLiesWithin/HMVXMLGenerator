@@ -124,7 +124,8 @@ function generateXML() {
 }
 
 function validateCNPJ(cnpj) {
-    return cnpj.replace(/\D/g, '');
+    cnpj.replace(/\D/g, '');
+    return cnpj.PadLeft(14, '0')
 }
 
 function showImage(inputId, cidade) {
