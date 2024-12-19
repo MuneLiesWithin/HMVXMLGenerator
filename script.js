@@ -1,5 +1,5 @@
 function generateXML() {
-    const cnpj = document.getElementById("cnpj").value;
+    const cnpj = validateCNPJ(document.getElementById("cnpj").value);
     const dataEmissao = document.getElementById("dataemissao").value;
     let valor = document.getElementById("valor").value.replace(',', '.'); 
     const numDoc = document.getElementById("numdoc").value;
@@ -121,6 +121,10 @@ function generateXML() {
                 console.log(error);
             });
     }
+}
+
+function validateCNPJ(cnpj) {
+    return cnpj.replace(/\D/g, '');
 }
 
 function showImage(inputId, cidade) {
