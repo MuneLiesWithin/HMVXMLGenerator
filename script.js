@@ -1,5 +1,5 @@
 function generateXML() {
-    const cnpj = validateCNPJ(document.getElementById("cnpj").value);
+    const cnpj = document.getElementById("cnpj").value;
     const dataEmissao = document.getElementById("dataemissao").value;
     let valor = document.getElementById("valor").value.replace(',', '.'); 
     const numDoc = document.getElementById("numdoc").value;
@@ -33,7 +33,7 @@ function generateXML() {
 
                 // CNPJ
                 const cnpjTag = xmlDoc.querySelector('IdentificacaoPrestador > Cnpj');
-                cnpjTag.textContent = cnpj;
+                cnpjTag.textContent = validateCNPJ(cnpj);
 
                 // Data Emissão
                 const competenciaTag = xmlDoc.querySelector('Competencia');
